@@ -32,6 +32,9 @@ const SideBar = props => {
           <span className="title"> Id</span> : <span> {props.id}</span>
         </p>
       </div>
+      <button className="btn btn-info col-md-10" onClick={props.deleteFunt}>
+        Delete
+      </button>
     </div>
   );
 };

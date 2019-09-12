@@ -5,10 +5,15 @@ const intialState = {
 
 const reducer = (state = intialState, action) => {
   switch (action.type) {
-    case "FetchData":
+    case "FETCH_DATA":
       return { ...state, data: action.data };
-    case "COMPARE":
-      return { ...state, value: action.id };
+    case "COMPARE_DATA":
+      return { ...state, value: action.data };
+    case "DELETE_ITEM":
+      return {
+        ...state,
+        data: state.data.filter(item => item.id !== action.data)
+      };
     default:
       return state;
   }

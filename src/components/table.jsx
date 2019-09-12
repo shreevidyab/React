@@ -8,16 +8,18 @@ class Table extends Component {
     this.props.onFetchData();
   }
   render() {
-    const tableData = this.props.data.map((data, index) => {
-      return (
-        <tr>
-          <th scope="row">{index}</th>
-          <td>{data.name}</td>
-          <td>{data.subSeriesName}</td>
-          <td>{data.seriesName}</td>
-        </tr>
-      );
-    });
+    const tableData =
+      this.props.data &&
+      this.props.data.map((data, index) => {
+        return (
+          <tr key={data.id}>
+            <th scope="row">{index}</th>
+            <td>{data.name}</td>
+            <td>{data.subSeriesName}</td>
+            <td>{data.seriesName}</td>
+          </tr>
+        );
+      });
     return (
       <div>
         <table className="table table-striped col-md-6">

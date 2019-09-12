@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SideBar from "../components/sidebar";
 import "../App.css";
 import { connect } from "react-redux";
-import { fetchData, compareData } from "../store/action";
+import { fetchData, compareData, deleteData } from "../store/action";
 
 class List extends Component {
   componentDidMount() {
@@ -16,6 +16,7 @@ class List extends Component {
         if (this.props.value === details.id) {
           return (
             <SideBar
+              key={details.id}
               companyCode={details.companyCode}
               subSeriesId={details.subSeriesId}
               name={details.name}
@@ -23,6 +24,7 @@ class List extends Component {
               seriesName={details.seriesName}
               seriesId={details.seriesId}
               id={details.id}
+              deleteFunt={this.props.onDelete.bind(this, details.id)}
             />
           );
         }
@@ -70,7 +72,8 @@ const mapStatetoProps = state => {
 const mapDispatchprops = dispatch => {
   return {
     onFetchData: () => dispatch(fetchData()),
-    onCompare: item => dispatch(compareData(item))
+    onCompare: item => dispatch(compareData(item)),
+    onDelete: item => dispatch(deleteData(item))
   };
 };
 export default connect(
